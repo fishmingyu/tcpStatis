@@ -2,6 +2,7 @@ import pcapy as pc
 import struct
 import IPv4Decode
 import EthernetDecode
+
 reader = pc.open_offline('./data/packet.pcap')
 cnt = 0
 
@@ -20,8 +21,7 @@ while(1):
     if(Ethernet.IPType == '0800'):
         IPv4 = IPv4Decode.IPv4()
         IPv4.decodeIP(packet[14:34])
-        print(IPv4.srcIP)
-        print(IPv4.dstIP)
+        print(IPv4.info())
     else:
         print('?')
 

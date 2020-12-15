@@ -10,3 +10,4 @@ class IPv6(object):
         self.hopLimit = None           # 8bit hop limit
         self.srcIP = None       # 128bit src IP address
         self.dstIP = None       # 128bit dst IP address
+        
