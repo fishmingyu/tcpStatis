@@ -15,9 +15,7 @@ while(1):
     print(cnt)
     Ethernet = EthernetDecode.Ethernet()
     Ethernet.decodeEthernet(packet[0:14])
-    print(Ethernet.srcMac)
-    print(Ethernet.dstMac)
-    print(Ethernet.IPType)
+    print(Ethernet.info())
     if(Ethernet.IPType == '0800'):
         IPv4 = IPv4Decode.IPv4()
         IPv4.decodeIP(packet[14:34])
