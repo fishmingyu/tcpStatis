@@ -1,26 +1,28 @@
 import pcapy as pc
 import struct
+import util
 import IPv4Decode
 import EthernetDecode
+import csv
 
-reader = pc.open_offline('./data/packet.pcap')
-cnt = 0
+reader = pc.open_offline('./data/packet2.pcap')
+f = open('./data/data.csv','w',encoding='utf-8',newline='')
+csvWriter = csv.writer(f)
+csvWriter.writerow(util.head())
 
 while(1):
     (Pkthdr, packet) = reader.next()
     length = len(packet)
     if(length == 0):
         break
-    cnt = cnt + 1
-    print(cnt)
+    
     Ethernet = EthernetDecode.Ethernet()
     Ethernet.decodeEthernet(packet[0:14])
-    print(Ethernet.info())
-    if(Ethernet.IPType == '0800'):
+    
+    if(Ethernet.IPType == '0800'): #exclusively decode IPv4
         IPv4 = IPv4Decode.IPv4()
         IPv4.decodeIP(packet[14:34])
-        print(IPv4.info())
-    else:
-        print('?')
+        csvData = Ethernet.data() + IPv4.data()
+        csvWriter.writerow(csvData)
 
 

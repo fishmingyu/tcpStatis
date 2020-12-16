@@ -22,3 +22,9 @@ class Ethernet(object):
         row.add_row(['source MAC', self.srcMac])
         row.add_row(['IP Type', self.IPType])
         return row
+    def data(self):
+        data = []
+        data.append(self.dstMac)
+        data.append(self.srcMac)
+        data.append(self.IPType)
+        return data
