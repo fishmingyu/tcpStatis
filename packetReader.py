@@ -5,7 +5,7 @@ import IPv4Decode
 import EthernetDecode
 import csv
 
-reader = pc.open_offline('./data/packet2.pcap')
+reader = pc.open_offline('./data/15minute.pcap')
 f = open('./data/data.csv','w',encoding='utf-8',newline='')
 csvWriter = csv.writer(f)
 csvWriter.writerow(util.head())
