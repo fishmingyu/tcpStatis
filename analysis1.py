@@ -17,7 +17,7 @@ def protocol_type(data, save_path):
     group_num_other_in = 0
     group_num_other_out = 0
     for index in range(len(data)):
-        if data[index][12] == '172.30.3.167':
+        if data[index][1] == 'f0:18:98:50:8d:e9':
             if data[index][10] == '6':
                 group_num_TCP_out += 1
                 num_TCP_out += int(data[index][6])
@@ -28,7 +28,7 @@ def protocol_type(data, save_path):
                 print(f'Upload Unknown Type:{data[index][10]}')
                 group_num_other_out += 1
                 num_other_out += int(data[index][6])
-        elif data[index][13] == '172.30.3.167':
+        elif data[index][0] == 'f0:18:98:50:8d:e9':
             if data[index][10] == '6':
                 group_num_TCP_in += 1
                 num_TCP_in += int(data[index][6])
@@ -90,7 +90,4 @@ if __name__ == '__main__':
         13: dst IP address
         '''
 
-        protocol_type(data, './plt')
-        print(data[1])
-        print(data[2])
-        print(data[3])
+        protocol_type(data, './img')
