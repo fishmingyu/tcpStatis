@@ -117,7 +117,7 @@ def datalen_analysis(data, port_num, title, direction):
 
 
 if __name__ == '__main__':
-    with open('./data/data.csv') as f:
+    with open('../data/data.csv') as f:
         reader = csv.reader(f)
         data = list(reader)
 
@@ -156,7 +156,7 @@ if __name__ == '__main__':
         31: payload
         '''
 
-        in_TCP_data, in_UDP_data, out_TCP_data, out_UDP_data = protocol_type(data, './img/Protocol_Type.jpg')
+        in_TCP_data, in_UDP_data, out_TCP_data, out_UDP_data = protocol_type(data, '../img/Protocol_Type.jpg')
         plt.figure(figsize=(6, 6))
         plt.subplot(2, 2, 1)
         port_num_1 = port_analysis(in_TCP_data, 'Download TCP Distribution', direction='IN')
@@ -166,7 +166,7 @@ if __name__ == '__main__':
         port_num_3 = port_analysis(in_UDP_data, 'Download UDP Distribution', direction='IN')
         plt.subplot(2, 2, 4)
         port_num_4 = port_analysis(out_UDP_data, 'Upload UDP Distribution', direction='OUT')
-        plt.savefig('./img/all.jpg')
+        plt.savefig('../img/all.jpg')
         plt.figure(figsize=(6, 6))
         plt.subplot(2, 2, 1)
         datalen_analysis(data, port_num_1, 'Download TCP message length distribution', direction='IN')
@@ -176,4 +176,4 @@ if __name__ == '__main__':
         datalen_analysis(data, port_num_3, 'Download UDP message length distribution', direction='IN')
         plt.subplot(2, 2, 4)
         datalen_analysis(data, port_num_4, 'Upload UDP message length distribution', direction='OUT')
-        plt.savefig('./img/CDF.jpg')
+        plt.savefig('../img/CDF.jpg')

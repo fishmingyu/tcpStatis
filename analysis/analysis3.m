@@ -1,5 +1,5 @@
 clear all;close all;clc;
-M=importdata('./data/data.csv');
+M=importdata('../data/data.csv');
 src = '183.172.173.42';
 intcp=0;
 outtcp=0;

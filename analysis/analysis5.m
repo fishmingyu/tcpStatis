@@ -1,5 +1,5 @@
 clear all;close all;clc;
-M=importdata('data.csv');
+M=importdata('../data/data.csv');
 ctl = zeros(6,6);
 src = '183.172.173.42';
 %六行依次表示：进入1，进入0，比例，出去1，出去0，比例；四列以此表示从urg开始的6个控制位

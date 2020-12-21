@@ -1,5 +1,5 @@
 clear all;close all;clc;
-data = csvread('15minuteData.csv',1,2,[1,2,154660,11]);
+data = csvread('../data/data.csv',1,2,[1,2,154660,11]);
 totalMF = 0;
 for i = 1:154660
     ctl = floor(data(i,7)/4096);
