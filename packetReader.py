@@ -2,6 +2,7 @@ import pcapy as pc
 import struct
 import util
 import TCPDecode
+import UDPDecode
 import IPv4Decode
 import EthernetDecode
 import csv
@@ -26,6 +27,12 @@ while(1):
             TCP = TCPDecode.TCP()
             TCP.decodeTCP(packet[34:])
             csvData = Ethernet.data() + IPv4.data() + TCP.data()
+            csvWriter.writerow(csvData)
+        elif(IPv4.protocol == 17):
+            UDP = UDPDecode.UDP()
+            UDP.decodeUDP(packet[34:42])
+            print(UDP.info())
+            csvData = Ethernet.data() + IPv4.data() + UDP.data()
             csvWriter.writerow(csvData)
         else:
             csvData = Ethernet.data() + IPv4.data()
