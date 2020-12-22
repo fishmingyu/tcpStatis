@@ -112,6 +112,7 @@ def datalen_analysis(data, max_ports, direction, save_path):
             CDF[index + 1] = CDF[index] + PDF[index + 1]
         plt.subplot(5, 2, i + 1)
         plt.plot(CDF)
+        plt.ylabel('packet number')
         plt.title(f'port: {max_port}')
     plt.savefig(save_path)
 
